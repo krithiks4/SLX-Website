@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Heat Islands - Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1600x900/?city,heat');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Urban Heat Islands</div>
+            <ul class="nav-links">
+                <li><a href="main.html" class="active">Home</a></li>
+                <li><a href="info.html">Learn More</a></li>
+                <li><a href="involvement.html">Get Involved</a></li>
+                <li><a href="responses.html">Community Responses</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Understanding Urban Heat Islands</h1>
+            <p>Exploring the impact of urban development on local climate and finding sustainable solutions for cooler cities.</p>
+            <a href="info.html" class="btn">Learn More</a>
+        </div>
+    </section>
+    
+    <main>
+        <section>
+            <h2>What are Urban Heat Islands?</h2>
+            <p>Urban Heat Islands (UHIs) are specific areas of cities that experience significantly higher temperatures than their surrounding rural areas. This phenomenon is primarily caused by human activities and changes in land use, where natural land cover is replaced with heat-absorbing materials like asphalt, concrete, and buildings.</p>
+            
+            <p>As cities continue to grow and climate change intensifies, understanding and addressing the UHI effect becomes increasingly important for creating sustainable, livable urban environments.</p>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <h3>Climate Impact</h3>
+                <p>UHIs exacerbate the challenges caused by climate change and global warming, particularly during heatwaves, contributing to increased health risks, higher energy usage, and environmental degradation.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Health Concerns</h3>
+                <p>The UHI effect can lead to increased numbers of heat-related illnesses, higher mortality rates, and elevated energy consumption due to the increased need for air conditioning in urban areas.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Sustainable Solutions</h3>
+                <p>Addressing the UHI effect is critical for improving climate resilience in urban settings. Solutions include urban greening, green roofs, reflective materials, and creating climate-aware zones that foster socialization.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Urban Heat Islands SLX Project | Supporting UN Sustainable Development Goal 13: Climate Action</p>
+    </footer>
+</body>
+</html>
+

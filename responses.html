@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Responses - Urban Heat Islands</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .responses-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        .response-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .response-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .response-item {
+            margin-bottom: 1rem;
+        }
+        .response-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+        }
+        .response-item p {
+            margin: 0;
+            color: #666;
+        }
+        .anonymous {
+            color: #666;
+            font-style: italic;
+        }
+        .filter-controls {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .filter-controls select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Urban Heat Islands</div>
+            <ul class="nav-links">
+                <li><a href="main.html" class="active">Home</a></li>
+                <li><a href="info.html">Learn More</a></li>
+                <li><a href="involvement.html">Get Involved</a></li>
+                <li><a href="responses.html">Community Responses</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="responses-container">
+        <section class="intro">
+            <h1>Community Responses</h1>
+            <p class="subtitle">See what others in the community think about urban heat islands</p>
+        </section>
+
+        <div class="filter-controls">
+            <select id="visibilityFilter">
+                <option value="all">All Responses</option>
+                <option value="public">Public Responses</option>
+                <option value="anonymous">Anonymous Responses</option>
+            </select>
+            <select id="opinionFilter">
+                <option value="all">All Opinions</option>
+                <option value="good">Positive</option>
+                <option value="bad">Negative</option>
+                <option value="neutral">Neutral</option>
+            </select>
+        </div>
+
+        <div id="responsesList"></div>
+    </main>
+
+    <footer>
+        <p>Urban Heat Islands SLX Project | Supporting UN Sustainable Development Goal 13: Climate Action</p>
+    </footer>
+
+    <script>
+        function displayResponses() {
+            const responses = JSON.parse(localStorage.getItem('responses') || '[]');
+            const visibilityFilter = document.getElementById('visibilityFilter').value;
+            const opinionFilter = document.getElementById('opinionFilter').value;
+            const responsesList = document.getElementById('responsesList');
+            
+            responsesList.innerHTML = '';
+
+            responses
+                .filter(response => {
+                    if (visibilityFilter !== 'all' && response.visibility !== visibilityFilter) return false;
+                    if (opinionFilter !== 'all' && response.uhiOpinion !== opinionFilter) return false;
+                    return true;
+                })
+                .forEach(response => {
+                    const card = document.createElement('div');
+                    card.className = 'response-card';
+                    
+                    const header = document.createElement('div');
+                    header.className = 'response-header';
+                    
+                    if (response.visibility === 'public') {
+                        header.innerHTML = `
+                            <div>
+                                <strong>${response.name}</strong>
+                                <p>${response.email}</p>
+                            </div>
+                        `;
+                    } else {
+                        header.innerHTML = '<div class="anonymous">Anonymous Response</div>';
+                    }
+                    
+                    header.innerHTML += `<div>${new Date(response.timestamp).toLocaleString()}</div>`;
+                    
+                    const content = document.createElement('div');
+                    content.className = 'response-content';
+                    content.innerHTML = `
+                        <div class="response-item">
+                            <h4>Opinion on UHIs</h4>
+                            <p>${response.uhiOpinion}</p>
+                        </div>
+                        <div class="response-item">
+                            <h4>Desired Changes</h4>
+                            <p>${response.changes}</p>
+                        </div>
+                        <div class="response-item">
+                            <h4>Ideas and Suggestions</h4>
+                            <p>${response.ideas || 'No suggestions provided'}</p>
+                        </div>
+                        <div class="response-item">
+                            <h4>Additional Comments</h4>
+                            <p>${response.additional || 'No additional comments'}</p>
+                        </div>
+                    `;
+                    
+                    card.appendChild(header);
+                    card.appendChild(content);
+                    responsesList.appendChild(card);
+                });
+        }
+
+        document.getElementById('visibilityFilter').addEventListener('change', displayResponses);
+        document.getElementById('opinionFilter').addEventListener('change', displayResponses);
+
+        // Initial display
+        displayResponses();
+    </script>
+</body>
+</html> 
